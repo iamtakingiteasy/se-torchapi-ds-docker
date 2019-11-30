@@ -20,7 +20,7 @@ docker run -v /home/data/your/server/data:/home/user/data -p 0.0.0.0:27016:27016
 
 Entrypoint checks if /home/user/data directory is empty, and if it is -- copies torch distribution to it before starting the server.
 
-Yoy may also check out example [docker-compose.yaml](docker-compose.yaml)
+Yoy may also check out example [docker-compose.yaml](https://github.com/iamtakingiteasy/se-torchapi-ds-docker/blob/master/docker-compose.yaml)
 
 # Customization
 
