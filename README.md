@@ -18,6 +18,8 @@ To counter that to some extent, xvfb and x11vnc is used. Openbox is added to all
 docker run -v /home/data/your/server/data:/home/user/data -p 0.0.0.0:27016:27016/udp -p 127.0.0.1:5900:5900 -p 127.0.0.1:8080:8080 iamtakingiteasy/setorchapids:latest
 ```
 
+Entrypoint checks if /home/user/data directory is empty, and if it is -- copies torch distribution to it before starting the server.
+
 # Customization
 
 | env variable | default                        | substitution                                                                                |
