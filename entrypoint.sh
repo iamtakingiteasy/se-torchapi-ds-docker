@@ -13,6 +13,9 @@ PID=$!
 sleep 2
 
 eval x11vnc $VNC_OPTIONS -auth /home/user/.Xauthority -display :99.0 &
+
+sleep 2
+
 DISPLAY=:99.0 openbox &
 
 _term() {

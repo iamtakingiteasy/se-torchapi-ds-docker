@@ -10,7 +10,7 @@ RUN \
 USER user
 RUN \
   WINEARCH=win64 wineboot -u && \
-  WINEARCH=win64 xvfb-run -a -- winetricks -q corefonts dotnet20 dotnet40 dotnet461 xna40 d3dx9 directplay
+  WINEARCH=win64 xvfb-run -s '-screen 0 1280x720x24' -n 99 -l -f /home/user/.Xauthority -- winetricks -q corefonts dotnet20 dotnet40 dotnet461 xna40 d3dx9 directplay
 ## mutable 
 # torch distribution
 ADD https://build.torchapi.net/job/Torch/job/Torch/job/master/95/artifact/bin/torch-server.zip /home/user/torch-server.zip
