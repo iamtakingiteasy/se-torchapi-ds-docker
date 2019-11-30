@@ -4,7 +4,7 @@
 
 A wine64 / archlinux-based dockerization of [TorchAPI](https://github.com/TorchAPI/Torch) [Space Engineers](https://www.spaceengineersgame.com) dedicated server.
 
-It used win64 wineprefix with all required .net 4.6.1 packages installed with winetricks.
+It uses win64 wineprefix with all required .net 4.6.1 packages installed with winetricks.
 
 Sadly, as usual with windows software, this one is heavily tied to GUI.
 
