@@ -10,13 +10,15 @@ eval xvfb-run $XVFB_OPTIONS -n 99 -l -f /home/user/.Xauthority -- wine64 Torch.S
 
 PID=$!
 
-sleep 2
+while :; do
+  eval x11vnc $VNC_OPTIONS -auth /home/user/.Xauthority -display :99.0
+  sleep 2
+done &
 
-eval x11vnc $VNC_OPTIONS -auth /home/user/.Xauthority -display :99.0 &
-
-sleep 2
-
-DISPLAY=:99.0 openbox &
+while :; do
+  DISPLAY=:99.0 openbox
+  sleep 2
+done &
 
 _term() {
   kill -15 $PID
