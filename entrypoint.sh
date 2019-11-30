@@ -6,7 +6,7 @@ set -x
 find /home/user/data -prune -type d -empty | grep -q . && cp -aR /home/user/torch/* /home/user/data/
 cd /home/user/data
 
-rm -f /home/user/.Xauthority
+rm -rf /home/user/.Xauthority /tmp/xvfb* /tmp/.X*
 
 eval xvfb-run $XVFB_OPTIONS -n 99 -l -f /home/user/.Xauthority -- wine64 Torch.Server.exe $@ &
 
