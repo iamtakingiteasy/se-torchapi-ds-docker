@@ -1,0 +1,19 @@
+version: "3.5"
+services:
+  server:
+    image: iamtakingiteasy/setorchapids:latest
+    restart: always
+    volumes:
+      - "data-server:/home/user/data"
+    ports:
+      - "0.0.0.0:27016:27016/udp"
+      - "127.0.0.1:5900:5900"
+      - "127.0.0.1:8080:8080"
+
+volumes:
+  data-server:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "${PWD}/data/server" # this directory must exist for volume to work
