@@ -9,9 +9,8 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
-          token: ${{ secrets.PUSH_TOKEN }}
       - name: Try sync
-        run: ls; ./sync.sh
+        run: |
+          git clone https://${{ secrets.PUSH_TOKEN }}@github.com/iamtakingiteasy/se-torchapi-ds-docker.git
+          cd se-torchapi-ds-docker
+          ./sync.sh
