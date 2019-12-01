@@ -12,5 +12,6 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
+          token: ${{ secrets.PUSH_TOKEN }}
       - name: Try sync
         run: ls; ./sync.sh
