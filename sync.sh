@@ -1,5 +1,5 @@
 #!/bin/sh
-curl https://torchapi.net/download/Torch | grep -v btn | sed -n '/.*a href="\([^"]*\)">\(v[0-9.]\+\).*/{s//\2 \1/p}' | awk \
+curl -sf https://torchapi.net/download/Torch | grep -v btn | sed -n '/.*a href="\([^"]*\)">\(v[0-9.]\+\).*/{s//\2 \1/p}' | awk \
   'BEGIN{
      delete tags[0];
      delete urls[0];
