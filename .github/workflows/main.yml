@@ -9,5 +9,8 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
       - name: Try sync
-        run: ls; env; ./sync.sh
+        run: ls; ./sync.sh
