@@ -1,12 +1,13 @@
 name: CI
 
 on:
+  deployment:
   schedule:
-  - cron: "0 0 * * *"
+    - cron: "0 0 * * *"
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-    - name: Try sync
-      run: ./sync.sh
+      - name: Try sync
+        run: ./sync.sh
