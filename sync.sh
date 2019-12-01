@@ -5,7 +5,7 @@ curl -sf https://torchapi.net/download/Torch | grep -v btn | sed -n '/.*a href="
      delete urls[0];
   }
   {
-    if (system("git tag -l " $1 " | grep -q .") == 1) {
+    if (system("git tag -l " $1 " | grep -q .") != 0) {
       tags[length(tags)] = $1;
       urls[length(urls)] = $2;
     } else {
