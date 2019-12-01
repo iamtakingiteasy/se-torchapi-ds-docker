@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Try sync
-        run: ./sync.sh
+        run: ls; env; ./sync.sh
