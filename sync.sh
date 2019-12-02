@@ -10,7 +10,7 @@ curl -sf https://torchapi.net/download/Torch | grep -v btn | sed -n '/.*a href="
       urls[length(urls)] = $2;
     } else {
       for (i = length(tags)-1; i >= 0; i--) {
-        system("sed 's|ADD [^ ]*|ADD " urls[i] "|' -i Dockerfile");
+        system("sed \"s|ADD [^ ]*|ADD " urls[i] "|\" -i Dockerfile");
         system("git commit -a -m " tags[0]);
         system("git tag " tags[0]);
         system("git push origin " tags[0]);
