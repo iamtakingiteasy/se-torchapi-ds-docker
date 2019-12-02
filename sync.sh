@@ -1,21 +1,15 @@
 #!/bin/sh
-curl -sf https://torchapi.net/download/Torch | grep -v btn | sed -n '/.*a href="\([^"]*\)">\(v[0-9.]\+\).*/{s//\2 \1/p}' | awk \
-  'BEGIN{
-     delete tags[0];
-     delete urls[0];
-  }
-  {
-    if (system("git tag -l " $1 " | grep -q .") != 0) {
-      tags[length(tags)] = $1;
-      urls[length(urls)] = $2;
-    } else {
-      for (i = length(tags)-1; i >= 0; i--) {
-        system("sed \"s|ADD [^ ]*|ADD " urls[i] "|\" -i Dockerfile");
-        system("git commit -a -m " tags[0]);
-        system("git tag " tags[0]);
-        system("git push origin " tags[0]);
-      }
-      system("git push origin master");
-      exit;
-    }
-  }'
+curl -sf https://build.torchapi.net/job/Torch/job/Torch/job/master/api/json | 
+  jq -r '.builds | .[].url' | 
+  while read url; do 
+    set -- $(curl -sf ${url}/api/json | jq -r '(.description | sub("-master"; "")) + " " + (.url + "/artifact/bin/torch-server.zip" | gsub("(?<x>[^:])/+"; "\(.x)/"))')
+    git tag -l $1 | grep -q . && break
+    echo $1 $2
+    sleep 1
+  done | tac | while read tag url; do
+    sed "s|ADD [^ ]*|ADD ${url}|" -i Dockerfile
+    git commit -a -m $tag
+    git push origin master
+    git tag $tag
+    git push origin $tag
+  done
