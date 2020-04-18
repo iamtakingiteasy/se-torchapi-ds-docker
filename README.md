@@ -29,7 +29,7 @@ Yoy may also check out example [docker-compose.yaml](https://github.com/iamtakin
 | env variable | default                        | substitution                                                                                |
 |--------------|--------------------------------|---------------------------------------------------------------------------------------------|
 | VNC_OPTIONS  | `-nevershared -forever`        | `x11vnc $VNC_OPTIONS -auth /home/user/.Xauthority -display :99.0 &`                         |
-| XVFB_OPTIONS | `-s \"-screen 0 1280x720x24\"` | `xvfb-run $XVFB_OPTIONS -n 99 -l -f /home/user/.Xauthority -- wine64 Torch.Server.exe $@ &` |
+| XVFB_OPTIONS | `-s '-screen 0 1280x720x24'` | `xvfb-run $XVFB_OPTIONS -n 99 -l -f /home/user/.Xauthority -- wine64 Torch.Server.exe $@ &` |
 
 CMD of container is added to Torch.Server.exe invocation.
 
