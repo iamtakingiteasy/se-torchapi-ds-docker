@@ -1,7 +1,7 @@
 FROM iamtakingiteasy/setorchapids-base:latest
 ## mutable 
 # torch distribution
-ADD https://build.torchapi.net/job/Torch/job/Torch/job/master/145/artifact/bin/torch-server.zip /home/user/torch-server.zip
+ADD https://build.torchapi.net/job/Torch/job/Torch/job/master/146/artifact/bin/torch-server.zip /home/user/torch-server.zip
 USER root
 # torch distribution tuning & cleanup
 RUN \
